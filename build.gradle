@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+}
+
+group = 'ru.skillbox'
+version = '1.0-SNAPSHOT'
+// Добавляем, если сломалась кодировка
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    telegramBotsVersion = '8.0.0'
+    openCsvVersion = '5.7.1'
+    // Необходимо добавить в решении для работы с JDBC
+    // Добавляем версию Postgres
+    postgreSqlVersion = '42.7.5'
+}
+
+
+dependencies {
+    implementation "org.telegram:telegrambots-longpolling:$telegramBotsVersion"
+    implementation "org.telegram:telegrambots-client:$telegramBotsVersion"
+
+    implementation "com.opencsv:opencsv:$openCsvVersion"
+    // Необходимо добавить в решении для работы с JDBC
+    // JDBC Postgres драйвер (зависимость)
+    implementation "org.postgresql:postgresql:$postgreSqlVersion"
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// Добавляем, если сломалась кодировка
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
