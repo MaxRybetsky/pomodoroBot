@@ -27,25 +27,25 @@ public class JdbcRepository implements UserDataRepository {
 
     // SQL Запросы
     private static final String INSERT_SESSION = """
-            INSERT INTO user_session (chat_id, type, duration, start_at)
+            INSERT INTO user_sessions (chat_id, type, duration, start_at)
             VALUES (?, ?, ?, ?)
             """;
             
     private static final String COMPLETE_SESSION = """
-            UPDATE user_session
+            UPDATE user_sessions
             SET stop_at = ?, completed = true
             WHERE chat_id = ? AND type = ? AND stop_at IS NULL
             """;
             
     private static final String STOP_SESSION = """
-            UPDATE user_session
+            UPDATE user_sessions
             SET stop_at = ?
             WHERE chat_id = ? AND stop_at IS NULL
             """;
             
     private static final String GET_STATISTICS = """
             SELECT type, duration, completed
-            FROM user_session
+            FROM user_sessions
             WHERE chat_id = ? AND stop_at IS NOT NULL
             """;
             
@@ -58,7 +58,7 @@ public class JdbcRepository implements UserDataRepository {
             
     private static final String EXPORT_STATISTICS = """
             SELECT type, duration, start_at, stop_at, completed
-            FROM user_session
+            FROM user_sessions
             WHERE chat_id = ?
             ORDER BY start_at DESC
             """;

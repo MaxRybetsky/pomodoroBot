@@ -1,8 +1,8 @@
 -- Необходимо добавить в решении для работы с JDBC
 -- Заготовки миграций - определенный инструмент не используем, просто фиксируем изменения в файле в виде SQL
 
--- Создание таблицы user_session
-CREATE TABLE public.user_session (
+-- Создание таблицы user_sessions
+CREATE TABLE public.user_sessions (
 	id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	chat_id BIGINT NOT NULL,
 	"type" varchar NOT NULL,
@@ -12,13 +12,13 @@ CREATE TABLE public.user_session (
 	completed boolean DEFAULT false
 );
 
-COMMENT ON TABLE public.user_session IS 'Таблица сессий пользователя - история запуска Pomodorro';
+COMMENT ON TABLE public.user_sessions IS 'Таблица сессий пользователя - история запуска Pomodoro';
 
 -- Column comments
-COMMENT ON COLUMN public.user_session.id IS 'Id сессии пользователя';
-COMMENT ON COLUMN public.user_session.chat_id IS 'Id чата пользователя';
-COMMENT ON COLUMN public.user_session."type" IS 'Тип сессии';
-COMMENT ON COLUMN public.user_session.duration IS 'Продолжительность сессии';
-COMMENT ON COLUMN public.user_session.start_at IS 'Время начала сессии';
-COMMENT ON COLUMN public.user_session.stop_at IS 'Время окончания сессии';
-COMMENT ON COLUMN public.user_session.completed IS 'Признак завершения сессии';
+COMMENT ON COLUMN public.user_sessions.id IS 'Id сессии пользователя';
+COMMENT ON COLUMN public.user_sessions.chat_id IS 'Id чата пользователя';
+COMMENT ON COLUMN public.user_sessions."type" IS 'Тип сессии';
+COMMENT ON COLUMN public.user_sessions.duration IS 'Продолжительность сессии';
+COMMENT ON COLUMN public.user_sessions.start_at IS 'Время начала сессии';
+COMMENT ON COLUMN public.user_sessions.stop_at IS 'Время окончания сессии';
+COMMENT ON COLUMN public.user_sessions.completed IS 'Признак завершения сессии';
