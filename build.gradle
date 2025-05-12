@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group = 'ru.skillbox'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    telegramBotsVersion = '8.0.0'
+    openCsvVersion = '5.7.1'
+}
+
+
+dependencies {
+    implementation "org.telegram:telegrambots-longpolling:$telegramBotsVersion"
+    implementation "org.telegram:telegrambots-client:$telegramBotsVersion"
+
+    implementation "com.opencsv:opencsv:$openCsvVersion"
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
