@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 // Необходимо добавить в решении для работы с JDBC
-public class JdbcRepository implements UserDataRepository {
+public class DataBaseUserDataRepository implements UserDataRepository {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     
     private final String dbUrl;
     private final String dbUser;
     private final String dbPassword;
 
-    public JdbcRepository(Config config) {
+    public DataBaseUserDataRepository(Config config) {
         this.dbUrl = config.dbUrl();
         this.dbUser = config.dbUser();
         this.dbPassword = config.dbPassword();

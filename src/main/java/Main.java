@@ -3,7 +3,7 @@ import config.Config;
 import config.ConfigReaderEnvironment;
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;
 import org.telegram.telegrambots.longpolling.TelegramBotsLongPollingApplication;
-import repository.JdbcRepository;
+import repository.DataBaseUserDataRepository;
 import service.PomodoroServiceImpl;
 
 public class Main {
@@ -17,7 +17,7 @@ public class Main {
 
         // Необходимо добавить в решении для работы с JDBC
         // Просто меняем исходую строку и вместо CsvUserDataRepository используем JdbcRepository с config-ом
-        var userDataRepository = new JdbcRepository(config);
+        var userDataRepository = new DataBaseUserDataRepository(config);
 
         var pomodoroService = new PomodoroServiceImpl(userDataRepository, telegramClient, config);
 
